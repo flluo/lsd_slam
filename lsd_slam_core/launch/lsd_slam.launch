@@ -1,0 +1,21 @@
+<launch>
+
+  <node name="lsd_slam_viewer" pkg="lsd_slam_viewer" type="viewer" output="screen" >
+  </node>
+
+  <!-- live -->
+  <node name="lsd_slam_core" pkg="lsd_slam_core" type="live_slam" output="screen"  >
+    <!-- adjust to your own settings -->
+    <remap from="/image" to="/image_raw" /> 
+    <!-- <remap from="/camera_info" to="/usb_cam/camera_info" /> -->
+    <param name="calib" value="$(find rp_camera)/calib/cam_ueye_2_8mm.cfg" />      
+  </node>
+
+  <!-- dataset -->
+<!--   <node name="lsd_slam_core" pkg="lsd_slam_core" type="dataset_slam" output="screen"  >
+    <param name="file" value="<files> " />
+    <param name="hz" value="<hz>" /> 
+    <param name="calib" value="<calibration_file>" />      
+  </node> -->
+
+</launch>
